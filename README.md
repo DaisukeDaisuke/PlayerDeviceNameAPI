@@ -103,11 +103,11 @@ int(1)
 
 ## 情報ソース様 一覧
 ### ios (iPhone)
-#####【Swift,Objective-C】iOSデバイスのモデル名を取得する 例:iPhoneXS Maxとか【CocoaPodsもあるよ】   
+####【Swift,Objective-C】iOSデバイスのモデル名を取得する 例:iPhoneXS Maxとか【CocoaPodsもあるよ】   
 https://qiita.com/takkyun/items/814aa45beee422a5f0c6  
   
 ### Android
-#####サポートされているデバイス
+#### サポートされているデバイス
 https://support.google.com/googleplay/answer/1727131?hl=ja  
 http://storage.googleapis.com/play_public/supported_devices.csv  
 
