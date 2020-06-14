@@ -104,7 +104,7 @@ int(1)
 ## 情報ソース様 一覧
 ### ios (iPhone)
 #### 【Swift,Objective-C】iOSデバイスのモデル名を取得する 例:iPhoneXS Maxとか【CocoaPodsもあるよ】   
-https://qiita.com/takkyun/items/814aa45beee422a5f0c6  
+https://qiita.com/MYamate_jp/items/9f26ad6f78f347ebd629  
   
 ### Android
 #### サポートされているデバイス
@@ -113,6 +113,6 @@ http://storage.googleapis.com/play_public/supported_devices.csv
 
 ### Fire OS
 以下のサイトに掲載致しましております、データシートのHTML解析の実施により、取得致しました。
-https://developer.amazon.com/ja/docs/fire-tablets/ft-device-specifications-fire-models.html
-https://developer.amazon.com/ja/docs/fire-tablets/ft-device-specifications-firehdx-models.html
-https://developer.amazon.com/ja/docs/fire-tablets/ft-device-specifications-firehd-models.html
+https://developer.amazon.com/ja/docs/fire-tablets/ft-device-specifications-fire-models.html  
+https://developer.amazon.com/ja/docs/fire-tablets/ft-device-specifications-firehdx-models.html  
+https://developer.amazon.com/ja/docs/fire-tablets/ft-device-specifications-firehd-models.html  
