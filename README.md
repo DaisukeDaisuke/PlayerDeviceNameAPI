@@ -17,7 +17,7 @@ PlayerDeviceNameAPI::getDevice(String);
 Android: 「Sony,Xperia Z4 Tablet」「Huawei,HUAWEI P20 Lite」「Sony,Xperia Tablet Z」(メーカー名,機種名)
 fireOS: 「Fire HD 8 (2020, 第10世代)」「Kindle Fire HD 8.9 (2012, 第2世代)(Wi-Fi)」「Kindle Fire HDX 8.9 (2013, 第3世代)(WAN)」(「機種名」(発売年, 第「世代」世代)「(WI-FI/WAN)」)
 IOS: 「iPhone 11 Pro」「iPhone 8 Plus」
-windows: [mousecomputer co.,ltd. z170-s01」(マザーボードの製造先(コンビューターの製造メーカー名) マザーボードの番型)
+windows: [」(空文字)
 
 未知の端末の場合、以下の値を返します。
 Android: 「sony sot31」「huawei ane-lx1」「sony sgp311」
@@ -90,7 +90,7 @@ public function join(PlayerJoinEvent $event){
 ```
 #### windows
 ```
-string(31) "MouseComputer Co.,Ltd. Z170-S01"
+string(0) ""
 NULL
 int(7)
 ```
