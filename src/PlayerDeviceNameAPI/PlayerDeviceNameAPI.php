@@ -44,7 +44,7 @@ class PlayerDeviceNameAPI extends PluginBase implements Listener{
 		$this->getServer()->getPluginManager()->registerEvents($this, $this);
 
 		self::$androidDeviceList = json_decode(gzdecode(file_get_contents($this->getResourceFolder()."android.bin")), true);
-		self::$iPhoneDeviceList = json_decode(file_get_contents($this->getResourceFolder()."iPhone.json"), true);
+		self::$iPhoneDeviceList = json_decode(file_get_contents($this->getResourceFolder()."iPhone_trim.json"), true);
 		self::$fireosDeviceList = json_decode(file_get_contents($this->getResourceFolder()."fireos.json"), true);
 	}
 
