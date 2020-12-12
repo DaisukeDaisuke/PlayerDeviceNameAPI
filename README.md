@@ -103,7 +103,7 @@ int(1)
 
 ## 情報ソース様 一覧
 ### ios (iPhone)
-#### 【Swift,Objective-C】iOSデバイスのモデル名を取得する 例:iPhoneXS Maxとか【CocoaPodsもあるよ】   
+#### 【Swift】iOSデバイスのモデル名を取得するだけのFrameworkを作った
 https://qiita.com/MYamate_jp/items/9f26ad6f78f347ebd629  
   
 ### Android
