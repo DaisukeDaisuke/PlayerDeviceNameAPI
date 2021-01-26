@@ -32,7 +32,7 @@ IOS: 「iPhone12,8」「iPhone11,6」
 未知の端末や、ios、Android、FireOS以外の端末の場合(Windowsの場合)、「null」を返します。  
 サーバーにプレイヤー様は存在しない場合、「null」を返します。  
 ```php
-PlayerDeviceNameAPI::getDevice(String);
+PlayerDeviceNameAPI::getDeviceName(String);
 ```
 応答例
 ```
