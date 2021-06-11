@@ -1,6 +1,6 @@
 {
     "i386": "Simulator",
-    "x86,64": "Simulator",
+    "x86_64": "Simulator",
     "ipod1,1": "iPod Touch 1st Generation",
     "ipod2,1": "iPod Touch 2nd Generation",
     "ipod3,1": "iPod Touch 3rd Generation",
