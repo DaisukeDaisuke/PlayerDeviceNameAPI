@@ -1,6 +1,6 @@
 {
     "i386": "Simulator",
-    "x86_64": "Simulator",
+    "x86,64": "Simulator",
     "ipod1,1": "iPod Touch 1st Generation",
     "ipod2,1": "iPod Touch 2nd Generation",
     "ipod3,1": "iPod Touch 3rd Generation",
@@ -108,5 +108,13 @@
     "ipad11,6": "iPad 8th Generation WiFi",
     "ipad11,7": "iPad 8th Generation Cellular",
     "ipad13,1": "iPad Air 4th Generation WiFi",
-    "ipad13,2": "iPad Air 4th Generation Cellular"
+    "ipad13,2": "iPad Air 4th Generation Cellular",
+    "ipad13,4": "iPad Pro 11inch 3rd Generation WiFi",
+    "ipad13,5": "iPad Pro 11inch 3rd Generation WiFi",
+    "ipad13,6": "iPad Pro 11inch 3rd Generation Cellular",
+    "ipad13,7": "iPad Pro 11inch 3rd Generation Cellular",
+    "ipad13,8": "iPad Pro 12.9inch 5th Generation WiFi",
+    "ipad13,9": "iPad Pro 12.9inch 5th Generation WiFi",
+    "ipad13,10": "iPad Pro 12.9inch 5th Generation Cellular",
+    "ipad13,11": "iPad Pro 12.9inch 5th Generation Cellular"
 }

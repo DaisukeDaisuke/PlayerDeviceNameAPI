@@ -108,5 +108,13 @@
     "ipad11,6": "iPad 8th WiFi",
     "ipad11,7": "iPad 8th Cellular",
     "ipad13,1": "iPad Air 4th WiFi",
-    "ipad13,2": "iPad Air 4th Cellular"
+    "ipad13,2": "iPad Air 4th Cellular",
+    "ipad13,4": "iPad Pro 11inch 3rd WiFi",
+    "ipad13,5": "iPad Pro 11inch 3rd WiFi",
+    "ipad13,6": "iPad Pro 11inch 3rd Cellular",
+    "ipad13,7": "iPad Pro 11inch 3rd Cellular",
+    "ipad13,8": "iPad Pro 12.9inch 5th WiFi",
+    "ipad13,9": "iPad Pro 12.9inch 5th WiFi",
+    "ipad13,10": "iPad Pro 12.9inch 5th Cellular",
+    "ipad13,11": "iPad Pro 12.9inch 5th Cellular"
 }
