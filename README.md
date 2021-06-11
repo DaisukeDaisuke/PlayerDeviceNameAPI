@@ -47,6 +47,21 @@ windows: 「null」
 サーバーにプレイヤー様は存在しない場合、「null」を返します。
 「null」
 ```
+### getDeviceNamebyDeviceModel
+指定致しました、デバイスモデル名より、デバイスの名前を取得します。  
+応答例
+```
+Android:「sony sot31」=>「Sony,Xperia Z4 Tablet」
+fireOS:「amazon kfonwi」=>「Fire HD 8 (2020, 第10世代)」
+IOS:「iphone12,8」=>「iPhone SE 2nd Generation」
+Nintendo Switch:「switch」=>「Nintendo Switch」(1件)
+xbox:「xbox_one_s」=>「Xbox One S」(1件)
+PlayStation: 「null」
+windows: 「null」
+
+未知、未来の端末の場合、以下の値を返します。
+「null」
+```
 ### getDeviceOS
 指定したプレイヤー様のデバイスOSを数値にて返します。  
   
@@ -83,9 +98,10 @@ use PlayerDeviceNameAPI\PlayerDeviceNameAPI;
 ```
 ```php
 public function join(PlayerJoinEvent $event){
-    var_dump(PlayerDeviceNameAPI::getDevice($event->getPlayer()->getName()));
-    var_dump(PlayerDeviceNameAPI::getDeviceName($event->getPlayer()->getName()));
-    var_dump(PlayerDeviceNameAPI::getDeviceOS($event->getPlayer()->getName()));
+   var_dump(PlayerDeviceNameAPI::getDevice($event->getPlayer()->getName()));
+   var_dump(PlayerDeviceNameAPI::getDeviceName($event->getPlayer()->getName()));
+   var_dump(PlayerDeviceNameAPI::getDeviceOS($event->getPlayer()->getName()));
+   var_dump(PlayerDeviceNameAPI::getDeviceNamebyDeviceModel(PlayerDeviceNameAPI::getDeviceModel($event->getPlayer()->getName())));
 }
 ```
 #### windows
@@ -93,12 +109,14 @@ public function join(PlayerJoinEvent $event){
 string(0) ""
 NULL
 int(7)
+NULL
 ```
 #### android
 ```
 string(22) "Huawei,HUAWEI P20 Lite"
 string(22) "Huawei,HUAWEI P20 Lite"
 int(1)
+string(22) "Huawei,HUAWEI P20 Lite"
 ```
 
 ## 情報ソース様 一覧

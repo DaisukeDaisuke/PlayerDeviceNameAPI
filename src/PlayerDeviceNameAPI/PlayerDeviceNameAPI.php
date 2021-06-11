@@ -3,6 +3,7 @@
 namespace PlayerDeviceNameAPI;
 
 use pocketmine\event\Listener;
+use pocketmine\event\player\PlayerJoinEvent;
 use pocketmine\event\server\DataPacketReceiveEvent;
 use pocketmine\network\mcpe\protocol\LoginPacket;
 use pocketmine\network\mcpe\protocol\types\DeviceOS;
@@ -37,12 +38,21 @@ class PlayerDeviceNameAPI extends PluginBase implements Listener{
 	public static $androidDeviceList = [];
 	public static $iPhoneDeviceList = [];
 	public static $fireosDeviceList = [];
+	public static $switchlist = [
+		"switch" => "Nintendo Switch",
+	];
+	public static $xboxlist = [
+		"xbox_one_s" => "Xbox One S",
+	];
 
 	public static $deviceModel = [];
 
 	public function onEnable(){
 		$this->getServer()->getPluginManager()->registerEvents($this, $this);
+		self::loaddatas();
+	}
 
+	public static function loaddatas(){
 		self::$androidDeviceList = json_decode(gzdecode(file_get_contents($this->getResourceFolder()."android.bin")), true);
 		self::$iPhoneDeviceList = json_decode(file_get_contents($this->getResourceFolder()."iPhone_trim.json"), true);
 		self::$fireosDeviceList = json_decode(file_get_contents($this->getResourceFolder()."fireos.json"), true);
@@ -82,7 +92,7 @@ class PlayerDeviceNameAPI extends PluginBase implements Listener{
 	 * Android: 「sony sot31」「huawei ane-lx1」「sony sgp311」
 	 * fireOS: 「amazon kfonwi」「amazon kfkawi」
 	 * IOS: 「iPhone12,8」「iPhone11,6」
-	 * windows: 「mousecomputer co.,ltd. z170-s01」
+	 * windows: 「null」
 	 *
 	 * @param String $name
 	 * @return String|null
@@ -124,8 +134,8 @@ class PlayerDeviceNameAPI extends PluginBase implements Listener{
 	 * fireOS: 「Fire HD 8 (2020, 第10世代)」「Kindle Fire HD 8.9 (2012, 第2世代)(Wi-Fi)」
 	 * IOS: 「iPhone 11 Pro」「iPhone 8 Plus」
 	 *
-	 * windowsの場合、「マザーボードの製造先(コンビューターの製造メーカー名) マザーボードの番型」 を返します。
-	 * 例:「mousecomputer co.,ltd. z170-s01」
+	 * windowsの場合、「null」 を返します。
+	 * 例:「null」
 	 *
 	 * 未来の端末の場合、以下の値を返します。
 	 * Android: 「sony sot31」「huawei ane-lx1」「sony sgp311」
@@ -137,6 +147,47 @@ class PlayerDeviceNameAPI extends PluginBase implements Listener{
 	 */
 	public static function getDevice(string $name): ?string{
 		return self::getDeviceName($name) ?? self::getDeviceModel($name) ?? null;
+	}
+
+	/**
+	 * 指定致しました、デバイスモデル名より、デバイスの名前を取得します。
+	 *
+	 * Android
+	 * 「sony sot31」=>「Sony,Xperia Z4 Tablet」,
+	 * 「huawei ane-lx1」=>「Huawei,HUAWEI P20 Lite」,
+	 * 「sony sgp311」=>「Sony,Xperia Tablet Z」
+	 *
+	 * fireOS
+	 * 「amazon kfonwi」=>「Fire HD 8 (2020, 第10世代)」
+	 * 「amazon kfkawi」=>「Kindle Fire HD 8.9 (2012, 第2世代)(Wi-Fi)」
+	 *
+	 * IOS
+	 * 「iphone12,8」=>「iPhone SE 2nd Generation」
+	 * 「iphone10,2」=>「iPhone 8 Plus」
+	 *
+	 * Nintendo Switch
+	 * 「switch」=>「Nintendo Switch」
+	 *
+	 * xbox
+	 * 「xbox_one_s」=>「Xbox One S」
+	 *
+	 * PlayStation
+	 * 「null」
+	 *
+	 * windows、未来の端末の場合、以下の値を返します。
+	 * 「null」
+	 *
+	 * @param string $deviceModel
+	 * @return string|null
+	 */
+	public static function getDeviceNamebyDeviceModel(string $deviceModel): ?string{
+		$deviceModel = mb_strtolower($deviceModel);
+		return self::$iPhoneDeviceList[$deviceModel] ??
+			self::$androidDeviceList[$deviceModel] ??
+			self::$fireosDeviceList[$deviceModel] ??
+			self::$switchlist[$deviceModel] ??
+			self::$xboxlist[$deviceModel] ??
+			null;
 	}
 
 	/**
