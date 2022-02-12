@@ -3,6 +3,9 @@
 namespace PlayerDeviceNameAPI;
 
 use pocketmine\event\Listener;
+use pocketmine\event\player\PlayerLoginEvent;
+use pocketmine\event\player\PlayerPreLoginEvent;
+use pocketmine\event\player\PlayerQuitEvent;
 use pocketmine\event\server\DataPacketReceiveEvent;
 use pocketmine\network\mcpe\protocol\LoginPacket;
 use pocketmine\network\mcpe\protocol\types\DeviceOS;
@@ -34,31 +37,46 @@ class PlayerDeviceNameAPI extends PluginBase implements Listener{
 	const DEVICE_OS = 0;
 	const DEVICE_MODEL = 1;
 
-	public static $androidDeviceList = [];
-	public static $iPhoneDeviceList = [];
-	public static $fireosDeviceList = [];
+	public DeviceNames $deviceNames;
 
 	public static $deviceModel = [];
 
-	public function onEnable(){
-		$this->getServer()->getPluginManager()->registerEvents($this, $this);
+	public function onLoad() : void{
+		$this->deviceNames = new DeviceNames($this->getResourceFolder());
+	}
 
-		self::$androidDeviceList = json_decode(gzdecode(file_get_contents($this->getResourceFolder()."android.bin")), true);
-		self::$iPhoneDeviceList = json_decode(file_get_contents($this->getResourceFolder()."iPhone_trim.json"), true);
-		self::$fireosDeviceList = json_decode(file_get_contents($this->getResourceFolder()."fireos.json"), true);
+	public function onEnable() : void{
+		$this->getServer()->getPluginManager()->registerEvents($this, $this);
 	}
 
 	public function getResourceFolder(): string{
 		return $this->getFile()."resources".DIRECTORY_SEPARATOR;
 	}
 
-	public function DataPacketReceive(DataPacketReceiveEvent $event){
-		if(!$event->getPacket() instanceof LoginPacket) return;
-		$packet = $event->getPacket();
-		self::$deviceModel[TextFormat::clean($packet->username)] = [
-			self::DEVICE_OS => $packet->clientData["DeviceOS"],
-			self::DEVICE_MODEL => $packet->clientData["DeviceModel"]
+	/**
+	 * @priority LOW
+	 *
+	 * @param PlayerLoginEvent $event
+	 * @return void
+	 */
+	public function DataPacketReceive(PlayerLoginEvent $event){
+		$packet = $event->getPlayer();
+		$extraData = $packet->getPlayerInfo()->getExtraData();
+		self::$deviceModel[$packet->getName()] = [
+			self::DEVICE_OS => $extraData["DeviceOS"] ?? "",
+			self::DEVICE_MODEL => $extraData["DeviceModel"] ?? DeviceOS::UNKNOWN,
 		];
+	}
+
+	/**
+	 * @priority HIGHEST
+	 *
+	 * @param PlayerQuitEvent $event
+	 * @return void
+	 */
+	public function PlayerQuit(PlayerQuitEvent $event) : void{
+		$player = $event->getPlayer();
+		unset(self::$deviceModel[$player->getName()]);
 	}
 
 	/**
