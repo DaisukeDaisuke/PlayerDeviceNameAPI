@@ -124,5 +124,8 @@
     "ipad14,1": "iPad mini 6th Generation WiFi",
     "ipad14,2": "iPad mini 6th Generation Cellular",
     "ipad12,1": "iPad 9th generation WiFi",
-    "ipad12,2": "iPad 9th generation Cellular"
+    "ipad12,2": "iPad 9th generation Cellular",
+    "iphone14,6": "iPhone SE 3rd Generation",
+    "ipad13,16": "iPad Air 5th Generation WiFi",
+    "ipad13,17": "iPad Air 5th Generation Cellular"
 }
